@@ -1,0 +1,31 @@
+{
+  "name": "convex-hull-fidner",
+  "version": "1.0.0-beta",
+  "description": "Convex Hull Fidner",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-linux": "electron-packager . AL-CHF --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
+    "package-win": "electron-packager . AL-CHF --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds"
+  },
+  "repository": "https://github.com/AndreasWillibaldWeber/convex-hull-finder",
+  "keywords": [
+    "Convex",
+    "Hull",
+    "Graham",
+    "Scan",
+    "Jarvis",
+    "March",
+    "Computational",
+    "Geometry"
+  ],
+  "author": "Andreas W. Weber",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^9.0.5"
+  },
+  "dependencies": {
+    "electron-packager": "^15.0.0",
+    "electron-reload": "^1.5.0"
+  }
+}

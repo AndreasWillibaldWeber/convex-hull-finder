@@ -1,0 +1,28 @@
+/**
+ * CSS to customize the slider of Materialize.css.
+ * @file slider.css
+ * @copyright Andreas W. Weber, 2020
+ * @license MIT
+ * @since 0.1.0
+ * @author Andreas W. Weber 
+ */
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #0d47a1;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #0d47a1;
+}
+
+input[type=range]::-ms-thumb {
+    background-color: #0d47a1;
+}
+
+input[type=range] + .thumb {
+    background-color: #0d47a1;
+}
+
+input[type=range] + .thumb.active .value {
+    color: #ffffff;
+}

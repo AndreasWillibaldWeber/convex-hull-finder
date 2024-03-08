@@ -1,0 +1,176 @@
+<!--
+ * Webpage based on Materialize.css as UI.
+ * @file index.html
+ * @copyright Andreas W. Weber, 2020
+ * @license MIT
+ * @since 0.1.0
+ * @author Andreas W. Weber 
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Computational Geometry - Convex Hull Finder</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <script type="text/javascript" src="./js/libs/jquery-3.4.1.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <link type="text/css" rel="stylesheet" href="./css/libs/material-iconfont/material-design-icons.css">
+    <link type="text/css" rel="stylesheet" href="./css/libs/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/main.css">
+    <link type="text/css" rel="stylesheet" href="./css/slider.css">
+    <link type="text/css" rel="stylesheet" href="./css/selection.css">
+    <link type="text/css" rel="stylesheet" href="./css/switch.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper blue darken-4">
+            <a href="#" class="brand-logo center right-spacing">Convex Hull Finder</a>
+        </div>
+    </nav>
+
+    <ul id="slide-out" class="sidenav">
+        <div class="container">
+            <form id="form_options">
+                <h4 class="blue-text text-darken-4">Configuration</h4>
+                <br />
+                <h5 class="blue-text text-darken-4">Select Options:</h5>
+                <div class="divider"></div>
+                <div id="select_algorithm" class="input-field col s12">
+                    <select id="selected_algorithm">
+                        <option value="GS" selected>Graham Scan</option>
+                        <option value="JM">Jarvis March</option>
+                    </select>
+                    <label id="label_select_algorithm" class="selection_label">Algorithm:</label>
+                </div>
+                <div class="row">
+                    <label>Number of Points</label>
+                    <p id="range_points" class="range-field">
+                        <input type="range" id="ranged_points" min="3" max="100" value="12"/>
+                    </p>
+                </div>
+                <br />
+                <h5 class="blue-text text-darken-4">Viualization:</h5>
+                <div class="divider"></div>
+                <div id="visualization">
+                    <div id="select_speed" class="input-field col s12">
+                        <select id="selected_speed">
+                            <option value="HI" selected>high</option>
+                            <option value="HM">high-medium</option>
+                            <option value="ME">medium</option>
+                            <option value="LM">low-medium</option>
+                            <option value="LO">low</option>
+                        </select>
+                        <label id="label_select_speed" class="selection_label">Speed:</label>
+                    </div>
+                    <div class="switch">
+                        <label>
+                            <input id="switch_algorithm" type="checkbox">
+                            <span class="lever"></span>
+                            Algorithm
+                        </label>
+                    </div>
+                    <div class="divider"></div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <a id="button_close" class="sidenav-close waves-effect waves-light btn blue darken-4 s12">close</a>
+                </div>
+            </form>
+        </div>
+    </ul>
+    <main>
+        <div class="row">
+            <div class="col s2">
+                <div class="card-panel card_height_output blue darken-4">
+                    <div class="white-text">
+                        <h5>Points (x,y):</h5>
+                        <ul id="points" class="collection black-text">
+                            <li class="collection-item">empty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <div id="panel_output" class="card-panel hoverable card_height_output blue lighten-5">
+                    <canvas id="output" width="565px" height="565px"></canvas>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card-panel card_height_output blue darken-4">
+                    <div class="white-text">
+                        <h5>Sorted (a):</h5>
+                        <ul id="sorted" class="collection black-text">
+                            <li class="collection-item">empty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card-panel card_height_output blue darken-4">
+                    <div class="white-text">
+                        <h5>Resulting:</h5>
+                        <ul id="resulting" class="collection black-text">
+                            <li class="collection-item">empty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="configuration" class="fixed-action-btn">
+            <button id="btn_configuration" data-target="slide-out" class="sidenav-trigger waves-effect waves-circle waves-ligh btn btn-floating btn-large yellow darken-4">
+                <i class="material-icons">settings</i>
+            </button>
+        </div>
+        <div id="reset" class="fixed-action-btn">
+            <button id="btn_reset" class="waves-effect waves-circle waves-ligh btn btn-floating btn-large orange darken-4">
+                <i class="material-icons">refresh</i>
+            </button>
+        </div>
+        <div id="start" class="fixed-action-btn">
+            <button id="btn_start" class="waves-effect waves-circle waves-ligh btn btn-floating btn-large green darken-4">
+                <i class="material-icons">play_arrow</i>
+            </button>
+        </div>
+        <div id="stop" class="fixed-action-btn">
+            <button id="btn_stop" class="disabled waves-effect waves-circle waves-ligh btn btn-floating btn-large red darken-4">
+                <i class="material-icons">stop</i>
+            </button>
+        </div>
+    </main>
+    <footer class="page-footer blue darken-4">
+        <div class="container">
+            <div class="row">
+                <div class="col s6">
+                    <b>Software:</b> Convex Hull Finder <br />
+                    <b>Author:</b> Andreas W. Weber 
+                </div>
+                <div class="col s6">
+                    <b>Version:</b> 1.0.0-beta<br />
+                    <b>License:</b> MIT
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="./js/utils.js"></script>
+    <script type="text/javascript" src="./js/classes/Color.js"></script>
+    <script type="text/javascript" src="./js/classes/Colors.js"></script>
+    <script type="text/javascript" src="./js/classes/Point.js"></script>
+    <script type="text/javascript" src="./js/classes/Renderer.js"></script>
+    <script type="text/javascript" src="./js/classes/ConvexHull.js"></script>
+
+    <script type="text/javascript" src="./js/main.js"></script>
+
+    <script type="text/javascript" src="./js/libs/materialize.min.js"></script>
+
+    <script type="text/javascript">
+        M.AutoInit();
+    </script>
+
+</body>
+
+</html>

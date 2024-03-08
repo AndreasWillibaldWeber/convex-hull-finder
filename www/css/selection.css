@@ -1,0 +1,26 @@
+/**
+ * CSS to customize the selection of Materialize.css.
+ * @file selection.css
+ * @copyright Andreas W. Weber, 2020
+ * @license MIT
+ * @since 0.1.0
+ * @author Andreas W. Weber 
+ */
+
+.select-dropdown{
+    color: #0d47a1;
+}
+
+ul.dropdown-content.select-dropdown li span {
+    color: #0d47a1;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #0d47a1;
+}
+
+.input-field input[type=text] {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+

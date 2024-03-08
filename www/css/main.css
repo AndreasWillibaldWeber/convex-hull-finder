@@ -1,0 +1,91 @@
+/**
+ * Main custom CSS.
+ * @file main.css
+ * @copyright Andreas W. Weber, 2020
+ * @license MIT
+ * @since 0.1.0
+ * @author Andreas W. Weber 
+ */
+
+.right-spacing {
+    padding-right: 10px !important;
+}
+
+#output {
+    border:0px solid #FFFFFF;
+    margin: 10px 15px 10px 15px;
+}
+
+#configuration {
+    bottom: 55px;
+    left: 76px;
+}
+
+#start {
+    bottom: 55px;
+    right: 291px;
+}
+
+#stop {
+    bottom: 55px;
+    right: 76px;
+}
+
+#reset {
+    bottom: 55px;
+    left: 515px;
+}
+
+ul.collection {
+    height: 495px;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+ul.collection::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+div.card_height_output {
+    min-height: 510px;
+}
+
+#select_backend_engine {
+    padding: 0px;
+}
+
+#panel_output {
+    padding: 10px !important;
+}
+
+#label_select_backend_engine {
+    left: 0px;
+}
+
+#btn_simulate {
+    padding-top: 5px;
+    margin-top: 15px;
+    height: 45px;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #616161;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #616161;
+}
+
+.pre_text {
+    white-space: pre-line;
+}
+
+footer {
+    padding-top: 10px !important;
+    padding-bottom: 0px !important;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: absolute;
+}
